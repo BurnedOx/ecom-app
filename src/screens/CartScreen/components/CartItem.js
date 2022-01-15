@@ -27,14 +27,14 @@ export class CartItem extends React.PureComponent {
     const checkDesQuantity = async () => {
       if (item.quantity == 1) {
         Alert.alert(
-          "Xóa giỏ hàng",
-          "Bạn có chắc muốn xóa sản phẩm khỏi giỏ hàng?",
+          "Clear cart",
+          "Are you sure you want to remove the product from the cart?",
           [
             {
-              text: "Hủy",
+              text: "Cancel",
             },
             {
-              text: "Đồng ý",
+              text: "Agree",
               onPress: onRemove,
             },
           ]
@@ -63,23 +63,23 @@ export class CartItem extends React.PureComponent {
             <CustomText style={styles.title}>{item.item.filename}</CustomText>
             <View>
               <TouchableOpacity onPress={onRemove}>
-                <MaterialCommunityIcons name='close' size={20} color='#000' />
+                <MaterialCommunityIcons name="close" size={20} color="#000" />
               </TouchableOpacity>
             </View>
           </View>
           <CustomText style={{ color: Colors.grey, fontSize: 12 }}>
-            Cung cấp bởi Cát Tường
+            Provided by Kishalaya
           </CustomText>
           <NumberFormat price={sum.toString()} />
           <View style={styles.box}>
             <TouchableOpacity onPress={checkDesQuantity} style={styles.boxMin}>
-              <MaterialCommunityIcons name='minus' size={16} />
+              <MaterialCommunityIcons name="minus" size={16} />
             </TouchableOpacity>
             <View>
               <CustomText style={styles.boxText}>{item.quantity}</CustomText>
             </View>
             <TouchableOpacity onPress={AddItemHandler} style={styles.boxMin}>
-              <MaterialCommunityIcons name='plus' size={16} />
+              <MaterialCommunityIcons name="plus" size={16} />
             </TouchableOpacity>
           </View>
         </View>

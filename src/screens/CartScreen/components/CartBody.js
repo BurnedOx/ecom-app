@@ -28,12 +28,12 @@ export const CartBody = ({
 }) => {
   const dispatch = useDispatch();
   const onRemove = (itemId) => {
-    Alert.alert("Bỏ giỏ hàng", "Bạn có chắc bỏ sản phẩm khỏi giỏ hàng?", [
+    Alert.alert("Skip cart", "Are you sure to remove the product from the cart?", [
       {
-        text: "Hủy",
+        text: "Cancel",
       },
       {
-        text: "Đồng ý",
+        text: "Agree",
         onPress: () => {
           dispatch(removeFromCart(carts._id, itemId));
         },
@@ -47,14 +47,14 @@ export const CartBody = ({
           <CustomText>{Messages["user.login.require"]}</CustomText>
           <View style={styles.nextButton}>
             <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <CustomText style={{ color: "#fff" }}>Tiếp tục</CustomText>
+              <CustomText style={{ color: "#fff" }}>Continue</CustomText>
             </TouchableOpacity>
           </View>
         </View>
       ) : carts.items.length === 0 ? (
         <View style={styles.center}>
           <CustomText style={{ fontSize: 16 }}>
-            Chưa có sản phẩm nào trong giỏ hàng
+          There are no products in the cart
           </CustomText>
         </View>
       ) : (
