@@ -14,7 +14,7 @@ import {
 } from "./src/reducers";
 //Navigator
 import { AppNavigator } from "./src/navigation";
-import { AppLoading } from "expo";
+import AppLoading from 'expo-app-loading'
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 
@@ -80,6 +80,7 @@ export default function App() {
       <AppLoading
         startAsync={LoadAssets}
         onFinish={() => setAssetLoaded(true)}
+        onError={console.warn}
       />
     );
   }

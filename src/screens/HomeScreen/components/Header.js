@@ -1,5 +1,5 @@
 // Import react
-import React from 'react';
+import React from "react";
 // Import react-native components
 import {
   SafeAreaView,
@@ -11,18 +11,18 @@ import {
   FlatList,
   Platform,
   StatusBar,
-} from 'react-native';
+} from "react-native";
 //icon
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 //Colors
-import Colors from '../../../utils/Colors';
+import Colors from "../../../utils/Colors";
 //Search Item component
-import SearchItem from './SearchItem';
-import Animated, { Easing } from 'react-native-reanimated';
-import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
+import SearchItem from "./SearchItem";
+import Animated, { Easing } from "react-native-reanimated";
+import { TouchableOpacity, TextInput } from "react-native-gesture-handler";
 const { Value, timing } = Animated;
 // Calculate window size
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 export class Header extends React.Component {
   constructor(props) {
@@ -30,8 +30,8 @@ export class Header extends React.Component {
     // state
     this.state = {
       isFocused: false,
-      keyword: '',
-      productsFilter: '',
+      keyword: "",
+      productsFilter: "",
     };
     // animation values
     this._input_box_translate_x = new Value(width);
@@ -42,7 +42,7 @@ export class Header extends React.Component {
   //Search
   searchFilterFunction = (searchText) => {
     const data = this.props.products.filter((product) =>
-      product.filename.toLowerCase().includes(searchText.toLowerCase()),
+      product.filename.toLowerCase().includes(searchText.toLowerCase())
     );
     this.setState({ keyword: searchText, productsFilter: data });
   };
@@ -123,22 +123,22 @@ export class Header extends React.Component {
     const clampedScrollY = scrollY.interpolate({
       inputRange: [0, 1],
       outputRange: [0, 1],
-      extrapolateLeft: 'clamp',
+      extrapolateLeft: "clamp",
     });
     const _diff_clamp_scroll_y = Animated.diffClamp(
       clampedScrollY,
       0,
-      headerPlatform,
+      headerPlatform
     );
-    const _header_translate_y = Animated.interpolate(_diff_clamp_scroll_y, {
+    const _header_translate_y = Animated.interpolateNode(_diff_clamp_scroll_y, {
       inputRange: [0, headerPlatform],
       outputRange: [0, -headerPlatform],
-      extrapolate: 'clamp',
+      extrapolate: "clamp",
     });
-    const _header_opacity = Animated.interpolate(_diff_clamp_scroll_y, {
+    const _header_opacity = Animated.interpolateNode(_diff_clamp_scroll_y, {
       inputRange: [0, headerPlatform],
       outputRange: [1, 0],
-      extrapolate: 'clamp',
+      extrapolate: "clamp",
     });
     // const ViewPlatForm = Platform.OS === "android" ? SafeAreaView : View;
     return (
@@ -164,27 +164,27 @@ export class Header extends React.Component {
                 onPress={() => this.props.navigation.toggleDrawer()}
               >
                 <Ionicons
-                  name='ios-menu'
+                  name="ios-menu"
                   size={30}
                   color={Colors.lighter_green}
                 />
               </TouchableOpacity>
               <View>
                 <Image
-                  source={require('../../../assets/Images/logoNoText.png')}
+                  source={require("../../../assets/Images/logoNoText.png")}
                   style={{
                     width: height < 668 ? 130 : 120,
-                    resizeMode: 'contain',
+                    resizeMode: "contain",
                   }}
                 />
               </View>
               <TouchableOpacity
                 activeOpacity={1}
-                underlayColor={'#ccd0d5'}
+                underlayColor={"#ccd0d5"}
                 onPress={this._onFocus}
                 style={styles.search_icon_box}
               >
-                <Ionicons name='ios-search' size={20} color={Colors.white} />
+                <Ionicons name="ios-search" size={20} color={Colors.white} />
               </TouchableOpacity>
               <Animated.View
                 style={[
@@ -195,21 +195,21 @@ export class Header extends React.Component {
                 <Animated.View style={{ opacity: this._back_button_opacity }}>
                   <TouchableOpacity
                     activeOpacity={1}
-                    underlayColor={'#ccd0d5'}
+                    underlayColor={"#ccd0d5"}
                     onPress={this._onBlur}
                     style={styles.back_icon_box}
                   >
                     <Ionicons
-                      name='ios-arrow-back'
+                      name="ios-arrow-back"
                       size={25}
                       color={Colors.light_green}
                     />
                   </TouchableOpacity>
                 </Animated.View>
                 <TextInput
-                  ref='input'
-                  placeholder='Tìm kiếm sản phẩm'
-                  clearButtonMode='always'
+                  ref="input"
+                  placeholder="Search product"
+                  clearButtonMode="always"
                   value={this.state.keyword}
                   onChangeText={(value) => this.searchFilterFunction(value)}
                   style={styles.input}
@@ -228,28 +228,25 @@ export class Header extends React.Component {
           ]}
         >
           <View style={styles.content_safe_area}>
-            {this.state.keyword === '' ? (
+            {this.state.keyword === "" ? (
               <View style={styles.image_placeholder_container}>
                 <Image
-                  source={require('../../../assets/Images/logo1.png')}
+                  source={require("../../../assets/Images/logo1.png")}
                   style={styles.image_placeholder}
                 />
-                <Text style={styles.image_placeholder_text}>
-                  Nhập vào từ khóa{'\n'}
-                  để tìm kiếm :D
-                </Text>
+                <Text style={styles.image_placeholder_text}>Enter keyword</Text>
               </View>
             ) : (
               <View
                 style={{
                   marginHorizontal: 20,
                   marginTop:
-                    Platform.OS === 'android' ? 0 : height < 668 ? 0 : 60,
+                    Platform.OS === "android" ? 0 : height < 668 ? 0 : 60,
                 }}
               >
                 {this.state.productsFilter.length === 0 ? (
                   <Text style={styles.image_placeholder_text}>
-                    Không tìm thấy sản phầm
+                    No products found
                   </Text>
                 ) : (
                   <FlatList
@@ -278,15 +275,15 @@ const styles = StyleSheet.create({
   header_safe_area: {
     zIndex: 1000,
     backgroundColor: Colors.white,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   header: {
-    position: 'absolute',
+    position: "absolute",
     backgroundColor: Colors.white,
     width,
     height: 50,
     top:
-      Platform.OS === 'android'
+      Platform.OS === "android"
         ? StatusBar.currentHeight
         : height > 736
         ? 40
@@ -294,10 +291,10 @@ const styles = StyleSheet.create({
   },
   header_inner: {
     flex: 1,
-    overflow: 'hidden',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    overflow: "hidden",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: 15,
   },
   search_icon_box: {
@@ -307,16 +304,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lighter_green,
     borderWidth: 1,
     borderColor: Colors.white,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   input_box: {
     height: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
     top: 0,
     left: 0,
     backgroundColor: Colors.white,
@@ -326,9 +323,9 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 40,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
     flex: 1,
@@ -342,13 +339,13 @@ const styles = StyleSheet.create({
   content: {
     width: width,
     height: height,
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     zIndex: 999,
   },
   content_safe_area: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? 80 : 40,
+    paddingTop: Platform.OS === "android" ? 80 : 40,
     paddingBottom: 80,
     backgroundColor: Colors.white,
   },
@@ -358,25 +355,25 @@ const styles = StyleSheet.create({
     borderTopColor: Colors.light_grey,
   },
   image_placeholder_container: {
-    flexDirection: 'column',
+    flexDirection: "column",
     marginTop: 100,
   },
   image_placeholder: {
     height: 80,
-    resizeMode: 'contain',
-    alignSelf: 'center',
+    resizeMode: "contain",
+    alignSelf: "center",
   },
   image_placeholder_text: {
-    textAlign: 'center',
-    color: 'gray',
+    textAlign: "center",
+    color: "gray",
     marginTop: 5,
   },
   search_item: {
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 40,
-    alignItems: 'center',
+    alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: '#e6e4eb',
+    borderBottomColor: "#e6e4eb",
     marginLeft: 16,
   },
   item_icon: {

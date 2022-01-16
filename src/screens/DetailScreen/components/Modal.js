@@ -22,13 +22,8 @@ const { width, height } = Dimensions.get("window");
 
 export class ModalComp extends React.PureComponent {
   render() {
-    const {
-      item,
-      color,
-      modalVisible,
-      setModalVisible,
-      navigation,
-    } = this.props;
+    const { item, color, modalVisible, setModalVisible, navigation } =
+      this.props;
     const moveToCart = () => {
       setModalVisible(false);
       navigation.navigate("Cart");
@@ -39,19 +34,19 @@ export class ModalComp extends React.PureComponent {
         style={{
           flex: 1,
         }}
-        animationType='slide'
+        animationType="slide"
         transparent={true}
         visible={modalVisible}
       >
         <View style={styles.modalContainer}></View>
         <View style={styles.modal}>
           <TouchableOpacity
-            animation='zoomIn'
+            animation="zoomIn"
             style={styles.close}
             onPress={() => setModalVisible(false)}
           >
             <MaterialCommunityIcons
-              name='window-close'
+              name="window-close"
               size={24}
               color={color}
             />
@@ -61,12 +56,12 @@ export class ModalComp extends React.PureComponent {
             style={{ width: "90%", flexDirection: "row", alignItems: "center" }}
           >
             <MaterialCommunityIcons
-              name='check-circle-outline'
+              name="check-circle-outline"
               color={color}
               size={20}
             />
             <CustomText style={{ ...styles.success, color }}>
-              Sản phẩm đã được thêm vào giỏ hàng
+              The product has been added to cart
             </CustomText>
           </View>
           <View style={styles.modelInfo}>
@@ -87,13 +82,13 @@ export class ModalComp extends React.PureComponent {
                   {item.filename}
                 </CustomText>
                 <CustomText style={{ fontSize: 12, color: Colors.grey }}>
-                  Cung cấp bởi Cát Tường
+                  Provided by Kishalaya
                 </CustomText>
               </View>
               <CustomText
                 style={{ marginTop: 5, fontSize: 14, color: Colors.text }}
               >
-                Thành tiền:
+                Price:
               </CustomText>
               <NumberFormat price={item.price} />
             </View>
@@ -113,7 +108,7 @@ export class ModalComp extends React.PureComponent {
               ]}
               onPress={moveToCart}
             >
-              <CustomText style={styles.actionText}>Xem Giỏ Hàng</CustomText>
+              <CustomText style={styles.actionText}>View Cart</CustomText>
             </TouchableOpacity>
           </View>
         </View>

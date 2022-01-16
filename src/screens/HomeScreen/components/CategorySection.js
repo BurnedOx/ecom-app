@@ -21,9 +21,9 @@ export class CategorySection extends React.PureComponent {
     const stones = data.filter((stone) => stone.type === "stone");
     function getItems() {
       const items =
-        name === "Vòng Thạch Anh"
+        name === "Quartz Ring"
           ? bracelets
-          : name === "Đá Ruby"
+          : name === "Ruby stone"
           ? stones
           : rings;
       return items;
@@ -56,7 +56,7 @@ export class CategorySection extends React.PureComponent {
           style={{ marginHorizontal: 10 }}
         >
           <BlurView tint="light" intensity={100} style={styles.seeMore}>
-            <CustomText style={styles.seeMoreText}>Xem Thêm</CustomText>
+            <CustomText style={styles.seeMoreText}>See more</CustomText>
           </BlurView>
         </TouchableOpacity>
       </View>

@@ -17,23 +17,23 @@ export const FinishOrderScreen = (props) => {
             source={require("../../components/IconAnimation/done.json")}
             autoPlay
             loop={false}
-            resizeMode='contain'
+            resizeMode="contain"
             style={{ height: 115 }}
           />
         </View>
         <CustomText style={styles.title}>
-          Cảm ơn, bạn đã đặt hàng thành công ^^
+          Thank you, your order was successful ^^
         </CustomText>
       </View>
       <View style={styles.id}>
         <CustomText style={styles.title}>
-          Chúng tôi sẽ xác nhận đơn hàng của bạn sớm nhất.
+          We will confirm your order as soon as possible.
         </CustomText>
       </View>
       <View style={styles.buttom}>
         <TouchableOpacity onPress={() => props.navigation.navigate("Home")}>
           <CustomText style={{ ...styles.title, color: "#fff" }}>
-            Quay lại trang chủ
+            Go back to the main page
           </CustomText>
         </TouchableOpacity>
       </View>

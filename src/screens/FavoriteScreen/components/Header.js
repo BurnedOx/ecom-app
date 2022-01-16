@@ -21,7 +21,7 @@ export const Header = ({ navigation }) => {
           />
         </TouchableOpacity>
       </View>
-      <CustomText style={styles.title}> Sản Phẩm Yêu Thích </CustomText>
+      <CustomText style={styles.title}> Favorite product </CustomText>
       <View style={{ position: "absolute", bottom: 5, right: 15, zIndex: 10 }}>
         <MaterialCommunityIcons
           style={{ marginBottom: 10 }}

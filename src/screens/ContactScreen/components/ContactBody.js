@@ -11,7 +11,7 @@ export const ContactBody = () => {
       <View style={styles.info}>
         <TextIcon
           icon={require("../../../components/IconAnimation/location.json")}
-          text='14 Phan Ngữ'
+          text='Kishalaya'
           url='mailto: anhquan291@gmail.com'
         />
         <TextIcon
