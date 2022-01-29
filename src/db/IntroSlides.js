@@ -2,25 +2,25 @@
 const slides = [
   {
     id: 1,
-    lable: "Mua may mắn",
-    subtitle: "Tìm loại đá yêu thích",
+    lable: "Buy lucky",
+    subtitle: "Find your favorite stone",
     des:
-      "Việc lựa chọn một vòng đá phù hợp đem lại lợi ích rất lớn trong sự nghiệp, tình cảm, tiền tài",
+      "Choosing a suitable stone ring brings great benefits in career, love and money",
     imageUrl: require("../assets/Images/slide1.png"),
   },
   {
     id: 2,
-    lable: "Cầu bình an",
-    subtitle: "Sản phẩm chất lượng",
+    lable: "Peace Bridge",
+    subtitle: "Quality products",
     des:
-      "Giúp  tăng sự tự tin, đầu óc minh mẫn sáng suốt, giải quyết vấn đề cách linh hoạt thông suốt",
+      "Helps increase confidence, clear mind, solve problems flexibly and smoothly",
     imageUrl: require("../assets/Images/slide2.png"),
   },
   {
     id: 3,
-    lable: "Mang hạnh phúc về",
-    subtitle: "Bạn còn chần chừ gì nữa?",
-    des: "Hãy tìm ngay cho mình sự may mắn, hạnh phúc tại CatTuong ",
+    lable: "Bring happiness back",
+    subtitle: "What are you waiting for?",
+    des: "Find your own luck and happiness right away at Kishalaya",
     imageUrl: require("../assets/Images/slide3.png"),
   },
 ];
